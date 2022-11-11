@@ -1,0 +1,21 @@
+//Colors
+$primary: #1a73e9;
+$secondary: #04004d;
+$danger: red;
+$warning: yellow;
+$info: purple;
+$white: #fff;
+$muted: #666666;
+
+// Border radius
+$default-border-radius: 4px;
+
+:export {
+  primary: $primary;
+  secondary: $secondary;
+  danger: $danger;
+  warning: $warning;
+  info: $info;
+  white: $white;
+  muted: $muted;
+}

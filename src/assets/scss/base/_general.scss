@@ -1,0 +1,21 @@
+@import "../layout/header";
+@import "../components/buttons";
+@import "../components/inputs";
+@import "../components/toastify";
+
+body {
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+.default-radius {
+  border-radius: $default-border-radius;
+}
+
+
+.row {
+  @extend .w-100, .mx-0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
