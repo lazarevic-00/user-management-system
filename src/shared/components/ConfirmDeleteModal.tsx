@@ -14,7 +14,8 @@ export const ConfirmDelete = ({show, setShow, deleteHandler, selectedItem}: any)
                 </h5>
                 <p className="text-center text-muted"
                 >
-                    Are you Sure You want to Remove {selectedItem?.firstName} {selectedItem?.lastName} ?
+                    Are you Sure You want to Remove <span
+                    className="fw-bold text-warning">{selectedItem?.firstName} {selectedItem?.lastName}</span> ?
                 </p>
             </Modal.Body>
             <Modal.Footer className="d-flex align-items-center justify-content-center border-top-none">
