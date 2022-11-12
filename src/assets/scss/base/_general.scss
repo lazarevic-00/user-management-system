@@ -2,15 +2,24 @@
 @import "../components/buttons";
 @import "../components/inputs";
 @import "../components/toastify";
+@import "../components/tables";
+@import "../components/notFound";
 
 body {
   font-family: 'Kumbh Sans', sans-serif;
+  background-color: #fafafa;
 }
 
 .default-radius {
   border-radius: $default-border-radius;
 }
 
+.required-input {
+  &:after {
+    content: " *";
+    color: $danger;
+  }
+}
 
 .row {
   @extend .w-100, .mx-0;

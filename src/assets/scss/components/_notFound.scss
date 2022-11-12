@@ -1,0 +1,4 @@
+.not-found-page {
+  @extend .d-flex, .align-items-center, .justify-content-center, .flex-column;
+  height: 100vh;
+}

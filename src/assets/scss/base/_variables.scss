@@ -1,11 +1,10 @@
 //Colors
-$primary: #1a73e9;
-$secondary: #04004d;
-$danger: red;
-$warning: yellow;
+$primary: #05bbc9;
+$secondary: #97a5a8;
+$danger: #ed4052;
+$warning: #fc9d79;
 $info: purple;
 $white: #fff;
-$muted: #666666;
 
 // Border radius
 $default-border-radius: 4px;
@@ -17,5 +16,4 @@ $default-border-radius: 4px;
   warning: $warning;
   info: $info;
   white: $white;
-  muted: $muted;
 }

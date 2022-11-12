@@ -1,4 +1,13 @@
 .btn {
+  @extend .d-flex, .align-items-center;
   border-radius: $default-border-radius;
-}
+  color: $white;
 
+  &:hover {
+    color: $white;
+  }
+
+  svg {
+    @extend .me-1;
+  }
+}
