@@ -15,7 +15,9 @@ export const UsersUpdate = () => {
     return (
         <Container className="my-5">
             <UserHeader buttonName="Go back" title="User update" handleClick={() => handleBack(navigate, "/")}/>
-            <UserAction handleSubmit={handleUpdateUser}/>
+            <div className="centered-content">
+                <UserAction handleSubmit={handleUpdateUser}/>
+            </div>
         </Container>
     )
 }

@@ -2,7 +2,6 @@
 @import "../components/buttons";
 @import "../components/inputs";
 @import "../components/toastify";
-@import "../components/tables";
 @import "../components/notFound";
 
 body {
@@ -10,8 +9,18 @@ body {
   background-color: #fafafa;
 }
 
+.box-shadow {
+  box-shadow: 1px 1px 14px 4px #eeeeee;
+}
+
 .default-radius {
   border-radius: $default-border-radius;
+}
+
+.card {
+  @extend .box-shadow, .default-radius;
+  border: 1px solid #eeeeee;
+  width: 100%;
 }
 
 .border-top-none {
@@ -31,4 +40,8 @@ body {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.centered-content {
+  @extend .d-flex, .align-items-center, .justify-content-center, .mt-3;
 }

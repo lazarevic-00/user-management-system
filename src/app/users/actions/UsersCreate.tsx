@@ -13,7 +13,9 @@ export const UsersCreate = () => {
     return (
         <Container className="my-5">
             <UserHeader buttonName="Go back" title="User create" handleClick={() => handleBack(navigate, "/")}/>
-            <UserAction handleSubmit={handleCreateUser}/>
+            <div className="centered-content">
+                <UserAction handleSubmit={handleCreateUser}/>
+            </div>
         </Container>
     )
 }

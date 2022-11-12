@@ -17,8 +17,12 @@ export const Users = () => {
     return (
         <Container className="my-5">
             <UserHeader buttonName="Create user" title="Users list" handleClick={() => navigate("/user/create")}/>
-            <div className="user-table">
-                <UsersList handleShowDeleteModal={handleShowDeleteModal}/>
+            <div className="centered-content">
+                <div className="card w-100">
+                    <div className="card-body">
+                        <UsersList handleShowDeleteModal={handleShowDeleteModal}/>
+                    </div>
+                </div>
                 <ConfirmDelete show={showDeleteModal} setShow={setShowDeleteModal}
                                deleteHandler={() => deleteHandler(1)}/>
                 {/*<EmptyState/>*/}
