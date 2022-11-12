@@ -1,11 +1,11 @@
 import {Container} from "react-bootstrap";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {UsersList} from "./components/UsersList";
+import {UsersListTable} from "../components/UsersListTable";
 import {UserHeader} from "../components/UserHeader";
 import {ConfirmDelete} from "../../../shared/components/ConfirmDeleteModal";
 
-export const Users = () => {
+export const UsersList = () => {
     const navigate = useNavigate();
     const [userList, setUserList] = useState([]);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -20,7 +20,7 @@ export const Users = () => {
             <div className="centered-content">
                 <div className="card w-100">
                     <div className="card-body">
-                        <UsersList handleShowDeleteModal={handleShowDeleteModal}/>
+                        <UsersListTable handleShowDeleteModal={handleShowDeleteModal}/>
                     </div>
                 </div>
                 <ConfirmDelete show={showDeleteModal} setShow={setShowDeleteModal}

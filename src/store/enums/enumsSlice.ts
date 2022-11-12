@@ -1,15 +1,15 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const usersSlice = createSlice({
-    name: 'users',
+const enumsSlice = createSlice({
+    name: 'enums',
     initialState: {},
 
     reducers: {
-        setUsers: (state, action) => {
+        setEnums: (state, action) => {
             state = action.payload;
             return state;
         },
     },
 });
 
-export default usersSlice;
+export default enumsSlice;

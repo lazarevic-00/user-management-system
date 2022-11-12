@@ -7,7 +7,7 @@ interface IUsersListProps {
     handleShowDeleteModal: () => void;
 }
 
-export const UsersList = ({handleShowDeleteModal}: IUsersListProps) => {
+export const UsersListTable = ({handleShowDeleteModal}: IUsersListProps) => {
     const navigate = useNavigate();
 
     return (

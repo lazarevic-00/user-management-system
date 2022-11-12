@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import usersSlice from "./users/usersRedux";
+import enumsSlice from "./enums/enumsSlice";
 
 export const rootReducer = combineReducers({
-    users: usersSlice.reducer
+    enums: enumsSlice.reducer
 });

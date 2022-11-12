@@ -15,7 +15,7 @@ export const UsersPermission = () => {
             <UserHeader buttonName="Go back" title="User update permission"
                         handleClick={() => handleBack(navigate, "/")}/>
             <div className="centered-content">
-                <UserAction handleSubmit={handleUpdatePermission} isEditPermission={true}/>
+                <UserAction handleSubmit={handleUpdatePermission} isEditPermission/>
             </div>
         </Container>
     )
