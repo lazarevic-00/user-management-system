@@ -1,5 +1,5 @@
 import {Button} from "react-bootstrap";
-import {IUserHeaderProps} from "./dto/IUserComponents";
+import {IUserHeaderProps} from "./interfaces/IUserComponents";
 
 
 export const UserHeader = ({handleClick, title, buttonName}: IUserHeaderProps) => {

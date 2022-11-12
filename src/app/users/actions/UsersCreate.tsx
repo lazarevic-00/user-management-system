@@ -6,6 +6,7 @@ import {UserHeader} from "../components/UserHeader";
 
 export const UsersCreate = () => {
     const navigate = useNavigate();
+    // const [currentUser, setCurrentUser] = useState(initialUserState);
     const handleCreateUser = (event: React.FormEvent) => {
         event.preventDefault();
         console.log('Submitted')

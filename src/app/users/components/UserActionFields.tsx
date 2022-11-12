@@ -1,41 +1,16 @@
-import {Col, Form} from "react-bootstrap";
+import {useSelector} from "react-redux";
+import {IAllStates} from "../../../store/rootReducer";
+import {DynamicForm} from "../../../shared/components/DynamicForm";
+import {userActionForm} from "../../../utils/forms/FormFields";
 
 export const UserActionFields = () => {
-    return (
-        <>
-            <Col md={4}>
-                <Form.Group className="mb-3">
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter first name"/>
-                </Form.Group>
-            </Col>
-            <Col md={4}>
-                <Form.Group className="mb-3">
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter last name"/>
-                </Form.Group>
-            </Col>
-            <Col md={4}>
-                <Form.Group className="mb-3">
-                    <Form.Label className="required-input">Username</Form.Label>
-                    <Form.Control type="text" required placeholder="Enter username"/>
-                </Form.Group>
-            </Col>
-            <Col md={6}>
-                <Form.Group className="mb-3">
-                    <Form.Label className="required-input">Email address</Form.Label>
-                    <Form.Control type="email" required placeholder="Enter email"/>
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
-            </Col>
-            <Col md={6}>
-                <Form.Group className="mb-3">
-                    <Form.Label className="required-input">Password</Form.Label>
-                    <Form.Control type="password" required placeholder="Password"/>
-                </Form.Group>
-            </Col>
-        </>
-    )
+    const currentUser = useSelector(
+        (state: IAllStates) => state.user
+    );
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = event.target;
+        console.log(name, value)
+    }
+    // console.log(currentUser)
+    return <DynamicForm initialValue={currentUser} changeHandler={changeHandler} inputArrays={userActionForm}/>
 }

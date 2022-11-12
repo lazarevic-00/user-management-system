@@ -6,3 +6,4 @@ import {IUser, IUserPagination} from "../../shared/model/User";
 export const UserService = {
     getAllUsers: (params: IUserPagination): Promise<BaseModel<IUser[]>> => requests.get(USER_URL, params),
 }
+

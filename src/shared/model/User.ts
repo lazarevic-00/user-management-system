@@ -4,7 +4,7 @@ export interface IUser {
     lastName: string;
     email: string;
     userName: string;
-    status: boolean;
+    isActive: boolean;
     permissions: string;
 }
 

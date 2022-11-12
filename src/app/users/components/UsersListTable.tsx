@@ -30,9 +30,9 @@ export const UsersListTable = ({handleShowDeleteModal, userList}: IUsersListProp
             {userList?.map(user => (
                 <tr key={user?.id}>
                     <td>{user?.id}</td>
-                    <td className={`text-${user?.status ? "success" : "danger"}`}>
+                    <td className={`text-${user?.isActive ? "success" : "danger"}`}>
                         <Check2Circle/>
-                        <span className="ms-1">{user?.status ? "Active" : "Inactive"}</span>
+                        <span className="ms-1">{user?.isActive ? "Active" : "Inactive"}</span>
                     </td>
                     <td>{user?.firstName}</td>
                     <td>{user?.lastName}</td>

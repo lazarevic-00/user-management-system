@@ -6,7 +6,7 @@ export const USERS_LIST = [
         userName: "jsmith",
         email: "jsmith@test.com",
         permissions: "user",
-        status: true
+        isActive: true
     },
     {
         id: "00000000-0000-0000-0000-000000000002",
@@ -15,7 +15,7 @@ export const USERS_LIST = [
         userName: "gg",
         email: "jsm123ith@test.com",
         permissions: "user",
-        status: true
+        isActive: false
     },
     {
         id: "00000000-0000-0000-0000-000000000003",
@@ -24,7 +24,7 @@ export const USERS_LIST = [
         userName: "ggg",
         email: "123@test.com",
         permissions: "user",
-        status: true
+        isActive: true
     },
     {
         id: "00000000-0000-0000-0000-000000000004",
@@ -33,6 +33,6 @@ export const USERS_LIST = [
         userName: "g",
         email: "g@test.com",
         permissions: "user",
-        status: false
+        isActive: false
     }
 ]

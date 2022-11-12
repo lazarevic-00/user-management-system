@@ -1,20 +1,16 @@
-import {Col, Form} from "react-bootstrap";
+import {Col} from "react-bootstrap";
+import {DynamicForm} from "../../../shared/components/DynamicForm";
+import {userPermissionForm} from "../../../utils/forms/FormFields";
 
 export const UserPermissionFields = () => {
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const {checked, value, name} = event.target;
+        console.log("value", checked, "name", name)
+    }
+    console.log(userPermissionForm)
     return (
         <Col sm={12} className="mb-3">
-            <Form.Check
-                type="radio"
-                label="User"
-                name="role"
-                id={`user-radio`}
-            />
-            <Form.Check
-                type="radio"
-                name="role"
-                label="Admin"
-                id={`admin-radio`}
-            />
+            <DynamicForm changeHandler={changeHandler} inputArrays={userPermissionForm}/>
         </Col>
     )
 }
