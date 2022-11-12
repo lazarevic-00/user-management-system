@@ -1,10 +1,6 @@
 import {Button} from "react-bootstrap";
+import {IUserHeaderProps} from "./dto/IUserComponents";
 
-interface IUserHeaderProps {
-    handleClick: () => void;
-    title: string;
-    buttonName: string;
-}
 
 export const UserHeader = ({handleClick, title, buttonName}: IUserHeaderProps) => {
     return (

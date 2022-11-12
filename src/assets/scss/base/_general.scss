@@ -14,6 +14,10 @@ body {
   border-radius: $default-border-radius;
 }
 
+.border-top-none {
+  border-top: none;
+}
+
 .required-input {
   &:after {
     content: " *";

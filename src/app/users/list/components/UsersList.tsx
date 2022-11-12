@@ -3,7 +3,11 @@ import {Button} from "react-bootstrap";
 import {ArchiveFill, PencilSquare, PersonLinesFill} from "react-bootstrap-icons";
 import {useNavigate} from "react-router-dom";
 
-export const UsersList = () => {
+interface IUsersListProps {
+    handleShowDeleteModal: () => void;
+}
+
+export const UsersList = ({handleShowDeleteModal}: IUsersListProps) => {
     const navigate = useNavigate();
 
     return (
@@ -28,15 +32,15 @@ export const UsersList = () => {
                 <td>@mdo</td>
                 <td>mark@mistral.com</td>
                 <td className="d-flex justify-content-around">
-                    <Button variant="primary" size="sm">
+                    <Button variant="primary" size="sm" onClick={() => navigate(`/user/update/permission/${1}`)}>
                         <PencilSquare/>
-                        Edit permission
+                        Assign Permission
                     </Button>
                     <Button variant="warning" size="sm" onClick={() => navigate(`/user/update/${1}`)}>
                         <PersonLinesFill/>
                         Edit
                     </Button>
-                    <Button variant="danger" size="sm">
+                    <Button variant="danger" size="sm" onClick={handleShowDeleteModal}>
                         <ArchiveFill/>
                         Delete
                     </Button>

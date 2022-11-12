@@ -10,6 +10,8 @@ export const UsersUpdate = () => {
         event.preventDefault();
         console.log('Submitted')
     }
+
+
     return (
         <Container className="my-5">
             <UserHeader buttonName="Go back" title="User update" handleClick={() => handleBack(navigate, "/")}/>

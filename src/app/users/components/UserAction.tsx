@@ -1,8 +1,6 @@
 import {Button, Col, Form, Row} from "react-bootstrap";
+import {IUserActionProps} from "./dto/IUserComponents";
 
-interface IUserActionProps {
-    handleSubmit: (event: React.FormEvent) => void;
-}
 
 export const UserAction = ({handleSubmit}: IUserActionProps) => {
     return (
