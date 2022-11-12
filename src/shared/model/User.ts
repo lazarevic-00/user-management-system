@@ -10,6 +10,6 @@ export interface IUser {
 
 export interface IUserPagination {
     page: number;
-    perPage: number;
+    limit: number;
     firstName?: string;
 }

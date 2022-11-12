@@ -11,6 +11,6 @@ export const UserActionFields = () => {
         const {name, value} = event.target;
         console.log(name, value)
     }
-    // console.log(currentUser)
+    console.log(currentUser)
     return <DynamicForm initialValue={currentUser} changeHandler={changeHandler} inputArrays={userActionForm}/>
 }

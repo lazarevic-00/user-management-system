@@ -6,9 +6,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {IUser} from "../../../shared/model/User";
 import {USERS_LIST} from "../../../dummy/dummy";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import userSlice from "../../../store/user/userSlice";
-import {IAllStates} from "../../../store/rootReducer";
 
 
 export const UsersUpdate = () => {

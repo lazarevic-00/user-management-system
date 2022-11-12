@@ -39,20 +39,22 @@ export const UsersListTable = ({handleShowDeleteModal, userList}: IUsersListProp
                     <td>@{user?.userName}</td>
                     <td>{user?.permissions}</td>
                     <td>{user?.email}</td>
-                    <td className="d-flex justify-content-around ">
-                        <Button variant="primary" size="sm"
-                                onClick={() => navigate(`/user/update/permission/${user?.id}`)}>
-                            <PencilSquare/>
-                            Assign Permission
-                        </Button>
-                        <Button variant="warning" size="sm" onClick={() => navigate(`/user/update/${user?.id}`)}>
-                            <PersonLinesFill/>
-                            Edit
-                        </Button>
-                        <Button variant="danger" size="sm" onClick={() => handleShowDeleteModal(user?.id)}>
-                            <ArchiveFill/>
-                            Delete
-                        </Button>
+                    <td>
+                        <div className="d-flex align-items-center">
+                            <Button variant="primary" size="sm"
+                                    onClick={() => navigate(`/user/update/permission/${user?.id}`)}>
+                                <PencilSquare/>
+                                Permission
+                            </Button>
+                            <Button variant="warning" size="sm" onClick={() => navigate(`/user/update/${user?.id}`)}>
+                                <PersonLinesFill/>
+                                Edit
+                            </Button>
+                            <Button variant="danger" size="sm" onClick={() => handleShowDeleteModal(user?.id)}>
+                                <ArchiveFill/>
+                                Delete
+                            </Button>
+                        </div>
                     </td>
                 </tr>
             ))}

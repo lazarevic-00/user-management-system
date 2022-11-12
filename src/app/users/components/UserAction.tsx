@@ -11,8 +11,8 @@ export const UserAction = ({handleSubmit, isEditPermission = false}: IUserAction
                 <Form onSubmit={handleSubmit}>
                     <Row>
                         {isEditPermission ? <UserPermissionFields/> : <UserActionFields/>}
-                        <Col md={12} className="d-flex justify-content-end">
-                            <Button variant="primary" type="submit" size="sm">
+                        <Col md={12}>
+                            <Button variant="primary" type="submit" className="ms-auto" size="sm">
                                 Submit
                             </Button>
                         </Col>

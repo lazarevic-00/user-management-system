@@ -31,7 +31,7 @@ interface IUserActionForm {
 
 
 export const DynamicForm = ({changeHandler, initialValue, inputArrays}: any) => {
-    return inputArrays.map((input: any) => {
+    return inputArrays?.map((input: any) => {
         return renderFormTypes(input, changeHandler, initialValue);
     })
 }
