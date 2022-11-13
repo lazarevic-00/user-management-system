@@ -1,9 +1,17 @@
 import {Button, Modal} from "react-bootstrap";
 import Lottie from "lottie-react";
 import trashIcon from "../icons/trashIcon.json";
-import React from "react";
+import React, {SetStateAction} from "react";
+import {IUser} from "../model/User";
 
-export const ConfirmModal = ({show, setShow, deleteHandler, selectedItem}: any) => {
+interface IConfirmModalProps {
+    show: boolean;
+    setShow: React.Dispatch<SetStateAction<boolean>>;
+    deleteHandler: (id: string) => void;
+    selectedItem?: IUser
+}
+
+export const ConfirmModal = ({show, setShow, deleteHandler, selectedItem}: IConfirmModalProps) => {
     const handleClose = () => setShow(false);
     return (
         <Modal show={show} onHide={handleClose} size="sm" centered>
@@ -25,7 +33,7 @@ export const ConfirmModal = ({show, setShow, deleteHandler, selectedItem}: any) 
                 <Button variant="danger" size="sm"
                         onClick={() => {
                             handleClose();
-                            deleteHandler(selectedItem?.id)
+                            deleteHandler(selectedItem?.id!)
                         }}>
                     Yes, Delete It!
                 </Button>

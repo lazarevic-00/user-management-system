@@ -3,13 +3,17 @@ export interface IUser {
     firstName: string;
     lastName: string;
     email: string;
+    createdAt: string;
     userName: string;
     isActive: boolean;
-    permission: any;
+    permission: string;
 }
 
 export interface IUserPagination {
     page: number;
     limit: number;
-    firstName?: string;
+    isActive?: string;
+    order?: string;
+    permission?: string;
+    email?: string;
 }

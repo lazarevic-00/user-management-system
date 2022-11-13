@@ -6,7 +6,7 @@ import {UserHeader} from "../components/UserHeader";
 import {useState} from "react";
 import {initialUserState} from "../../../shared/initialStates/UserState";
 import {UserService} from "../service";
-import {ErrorToast} from "../../../shared/toasters/toasters";
+import {ErrorToast, SuccessToast} from "../../../shared/toasters/toasters";
 
 export const UsersCreate = () => {
     const navigate = useNavigate();
@@ -14,7 +14,10 @@ export const UsersCreate = () => {
     const handleCreateUser = (event: React.FormEvent) => {
         event.preventDefault();
         UserService.createUser(currentUser).then(response => {
-            console.log(response)
+            if (response) {
+                SuccessToast(`You have successfully created user ${response.firstName} ${response?.lastName}`)
+                handleBack(navigate, "/");
+            }
         }).catch(error => ErrorToast(error))
     }
     return (

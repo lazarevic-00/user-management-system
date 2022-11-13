@@ -1,6 +1,16 @@
 import {toast} from 'react-toastify';
 
-export function ErrorToast(e: any) {
+interface IErrorProps {
+    response: {
+        data: {
+            error: {
+                message: string[]
+            }
+        }
+    }
+}
+
+export function ErrorToast(e: IErrorProps) {
     const errorMessages = e?.response?.data?.error?.message ? e?.response?.data?.error?.message : ["Something went wrong"];
     const isMessageArray = isErrorArray(errorMessages);
     if (isMessageArray) {

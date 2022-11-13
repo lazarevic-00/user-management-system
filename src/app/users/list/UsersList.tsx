@@ -5,7 +5,7 @@ import {UsersListTable} from "../components/UsersListTable";
 import {UserHeader} from "../components/UserHeader";
 import {ConfirmModal} from "../../../shared/components/ConfirmModal";
 import {ErrorToast, SuccessToast} from "../../../shared/toasters/toasters";
-import {IUser} from "../../../shared/model/User";
+import {IUser, IUserPagination} from "../../../shared/model/User";
 import {EmptyState} from "../../../shared/components/EmptyState";
 import {UserService} from "../service";
 import {Pagination} from "../../../shared/components/Pagination";
@@ -17,9 +17,13 @@ import {UserFilters} from "../components/UserFilters";
 
 export const UsersList = () => {
     const navigate = useNavigate();
-    const [pagination, setPagination] = useState({
+    const [pagination, setPagination] = useState<IUserPagination>({
         page: 1,
-        limit: 10
+        limit: 10,
+        email: "",
+        order: "",
+        isActive: "",
+        permission: ""
     })
     const [isLoading, setIsLoading] = useState(false);
     const [selectedUser, setSelectedUser] = useState<IUser>()
@@ -27,6 +31,7 @@ export const UsersList = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    console.log(pagination)
     const handlePages = (updatePage: number) => {
         setPagination({...pagination, page: updatePage});
         setPage(updatePage);
@@ -40,14 +45,16 @@ export const UsersList = () => {
 
     const deleteHandler = (userId: string) => {
         UserService.deleteUser(userId).then(response => {
-            getAllUsers({
-                setIsLoading: setIsLoading,
-                setState: setUserList,
-                setTotalPages: setTotalPages,
-                pagination: pagination
-            });
-            setSelectedUser(initialUserState);
-            SuccessToast(`You have successfully deleted user ${selectedUser?.firstName} ${selectedUser?.lastName}`)
+            if (response) {
+                getAllUsers({
+                    setIsLoading: setIsLoading,
+                    setState: setUserList,
+                    setTotalPages: setTotalPages,
+                    pagination: pagination
+                });
+                setSelectedUser(initialUserState);
+                SuccessToast(`You have successfully deleted user ${selectedUser?.firstName} ${selectedUser?.lastName}`)
+            }
         }).catch(error => ErrorToast(error))
     }
 
@@ -74,7 +81,7 @@ export const UsersList = () => {
             <div className="centered-content">
                 <div className="card w-100">
                     <div className="card-body">
-                        <UserFilters/>
+                        <UserFilters pagination={pagination} setPagination={setPagination}/>
                         {!isLoading ? <>
                             {!!userList?.length ?
                                 <UsersListTable userList={userList} handleShowDeleteModal={handleShowDeleteModal}/> :

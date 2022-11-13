@@ -23,3 +23,7 @@ export const getAdjustedEnums = (enums: IEnum[]) => {
         value: item.code
     }))
 }
+
+export const formatDate = (date: string, format: string = "sr-SR") => new Intl.DateTimeFormat(format,
+    {dateStyle: 'short', timeStyle: 'short'}
+).format(new Date(date))

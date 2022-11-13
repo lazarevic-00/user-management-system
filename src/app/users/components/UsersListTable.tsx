@@ -3,7 +3,7 @@ import {Button} from "react-bootstrap";
 import {ArchiveFill, Check2Circle, PencilSquare, PersonLinesFill} from "react-bootstrap-icons";
 import {useNavigate} from "react-router-dom";
 import {IUser} from "../../../shared/model/User";
-import {getPermissionName} from "../../../shared/functions/Functions";
+import {formatDate, getPermissionName} from "../../../shared/functions/Functions";
 
 interface IUsersListProps {
     handleShowDeleteModal: (userId: string) => void;
@@ -24,6 +24,7 @@ export const UsersListTable = ({handleShowDeleteModal, userList}: IUsersListProp
                 <th>Username</th>
                 <th>Permission</th>
                 <th>Email</th>
+                <th>Created at</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -43,6 +44,7 @@ export const UsersListTable = ({handleShowDeleteModal, userList}: IUsersListProp
                     <td>@{user?.userName}</td>
                     <td>{getPermissionName(user?.permission)}</td>
                     <td>{user?.email}</td>
+                    <td>{formatDate(user?.createdAt)}</td>
                     <td>
                         <div className="d-flex align-items-center justify-content-around">
                             <Button variant="primary" size="sm"

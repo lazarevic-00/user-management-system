@@ -1,4 +1,7 @@
-const FormFields = [
+import {IFormField} from "../../shared/model/Form";
+
+
+const UserFormFields: IFormField[] = [
     {
         name: "firstName",
         label: {
@@ -77,7 +80,6 @@ const FormFields = [
 
     {
         name: "permission",
-        label: null,
         input: {
             type: "radio",
             name: "permission",
@@ -103,9 +105,84 @@ const FormFields = [
     },
 ]
 
-const generateInputFields = (arr: string[]) => {
-    return FormFields.filter(input => arr.indexOf(input.name) > -1);
+const FilterFormFields: IFormField[] = [
+
+    {
+        name: "isActive",
+        label: {
+            name: "Filter by status",
+        },
+        input: {
+            type: "select",
+            className: "form-select",
+            options: [
+                {
+                    label: "Active",
+                    value: "true"
+                },
+                {
+                    label: "Inactive",
+                    value: "false"
+                }
+            ]
+        },
+    },
+    {
+        name: "permission",
+        label: {
+            name: "Filter by permission",
+        },
+        input: {
+            type: "select",
+            className: "form-select",
+            options: [
+                {
+                    label: "",
+                    value: ""
+                },
+            ]
+        },
+    },
+
+    {
+        name: "order",
+        label: {
+            name: "Sort by created date",
+        },
+        input: {
+            type: "select",
+            className: "form-select",
+            options: [
+                {
+                    label: "Ascending",
+                    value: "ASC"
+                },
+                {
+                    label: "Descending",
+                    value: "DESC"
+                }
+            ]
+        },
+    },
+    {
+        name: "email",
+        label: {
+            name: "Email address",
+        },
+        input: {
+            className: "form-control",
+            type: "email",
+            placeholder: "Enter Email address",
+        }
+    },
+
+]
+
+
+const generateInputFields = (arr: string[], fieldsArray: IFormField[]) => {
+    return fieldsArray?.filter(input => arr.indexOf(input.name) > -1);
 }
-export const userPermissionForm = generateInputFields(["permission"]);
-export const userCreateForm = generateInputFields(["firstName", "lastName", "password", "permission", "email", "userName", "isActive"])
-export const userUpdateForm = generateInputFields(["firstName", "lastName", "email", "userName", "isActive"])
+export const userPermissionForm = generateInputFields(["permission"], UserFormFields);
+export const userCreateForm = generateInputFields(["firstName", "lastName", "password", "permission", "email", "userName", "isActive"], UserFormFields);
+export const userUpdateForm = generateInputFields(["firstName", "lastName", "email", "userName", "isActive"], UserFormFields);
+export const userFilterForm = generateInputFields(["isActive", "permission", "order", "email"], FilterFormFields)

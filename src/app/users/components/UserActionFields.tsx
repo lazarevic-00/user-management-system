@@ -5,6 +5,7 @@ import {SetStateAction, useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {IAllStates} from "../../../store/rootReducer";
 import {getAdjustedEnums} from "../../../shared/functions/Functions";
+import {IFormField} from "../../../shared/model/Form";
 
 export interface IUserActionsFieldsProps {
     currentUser: IUser;
@@ -14,7 +15,7 @@ export interface IUserActionsFieldsProps {
 
 export const UserActionFields = ({currentUser, isEditForm = false, setCurrentUser}: IUserActionsFieldsProps) => {
     const enums = useSelector((state: IAllStates) => state.enums);
-    const [fields, setFields] = useState([]);
+    const [fields, setFields] = useState<IFormField[]>([]);
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value, checked} = event.target;
         const isCheckbox = name === "isActive";
@@ -23,20 +24,18 @@ export const UserActionFields = ({currentUser, isEditForm = false, setCurrentUse
     useEffect(() => {
         if (!!enums?.length) {
             if (isEditForm) {
-                setFields(userUpdateForm as any);
+                setFields(userUpdateForm);
             } else {
-                const t = userCreateForm.map((item) => {
+                const adjustPermissionValues = userCreateForm.map((item) => {
                     if (item.input.name === "permission") {
                         item.input.options = getAdjustedEnums(enums);
                     }
                     return item;
                 })
-                setFields(t as any);
+                setFields(adjustPermissionValues);
             }
-
         }
     }, [enums, isEditForm])
-    console.log(fields)
     return <DynamicForm initialValue={currentUser} changeHandler={changeHandler}
                         inputArrays={fields}/>
 }

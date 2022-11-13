@@ -15,9 +15,11 @@ const renderFormTypes = (formInput: any, changeHandler: React.ChangeEvent<HTMLIn
             return <InputText {...formInput} value={initialValue[name] ?? ""}
                               onChange={changeHandler} key={name}/>;
         case "radio":
-            return <InputRadio {...formInput} value={initialValue[name] ?? ""} onChange={changeHandler} key={name}/>
+            return <InputRadio {...formInput} value={initialValue[name] ?? ""} onChange={changeHandler} key={name}/>;
         case "checkbox":
-            return <InputCheckbox {...formInput} value={initialValue[name] ?? ""} key={name} onChange={changeHandler}/>
+            return <InputCheckbox {...formInput} value={initialValue[name] ?? ""} key={name} onChange={changeHandler}/>;
+        case "select":
+            return <InputSelect {...formInput} onChange={changeHandler} key={name}/>
         default:
             return null;
     }
@@ -28,7 +30,7 @@ const InputText = ({input, name, onChange, label, description, value}: any) => {
         <Col md={6}>
             <Form.Group className="mb-3">
                 <Form.Label {...label}>{label?.name}</Form.Label>
-                <Form.Control name={name} onChange={onChange} value={value} {...input}/>
+                <Form.Control {...input} name={name} onChange={onChange} defaultValue={value}/>
                 {!!description?.text.length && <Form.Text className="text-muted">
                     {description.text}
                 </Form.Text>}
@@ -36,6 +38,24 @@ const InputText = ({input, name, onChange, label, description, value}: any) => {
         </Col>
     )
 }
+
+const InputSelect = ({input, name, onChange, label}: any) => {
+    return (
+        <Col md={4}>
+            <label htmlFor={name} className="form-label">
+                {label?.name}
+            </label>
+            <select name={name} onChange={onChange} className={input?.className}>
+                <option value="">All</option>
+                {input.options?.map((item: { value: string, label: string }) => (
+                    <option value={item?.value} key={item?.value}>{item?.label}</option>
+                ))}
+            </select>
+        </Col>
+    )
+}
+
+
 const InputRadio = ({name, input, onChange, value}: any) => {
     return input?.options?.map((option: any) => {
         return (
