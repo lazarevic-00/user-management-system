@@ -3,7 +3,7 @@ import {userCreateForm, userUpdateForm} from "../../../utils/forms/FormFields";
 import {IUser} from "../../../shared/model/User";
 import {SetStateAction} from "react";
 
-interface IUserActionsFieldsProps {
+export interface IUserActionsFieldsProps {
     currentUser: IUser;
     setCurrentUser?: React.Dispatch<SetStateAction<IUser>>;
     isEditForm?: boolean;

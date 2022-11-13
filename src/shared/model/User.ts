@@ -5,7 +5,7 @@ export interface IUser {
     email: string;
     userName: string;
     isActive: boolean;
-    permissions: string;
+    permission: any;
 }
 
 export interface IUserPagination {

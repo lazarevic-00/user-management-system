@@ -16,7 +16,8 @@ export const UserAction = ({
             <div className="card-body">
                 <Form onSubmit={handleSubmit}>
                     <Row>
-                        {isEditPermission ? <UserPermissionFields/> :
+                        {isEditPermission ?
+                            <UserPermissionFields currentUser={currentUser as IUser} setCurrentUser={setCurrentUser}/> :
                             <UserActionFields currentUser={currentUser as IUser} setCurrentUser={setCurrentUser}
                                               isEditForm={isEditForm}/>}
                         <Col md={12}>

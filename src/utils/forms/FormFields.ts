@@ -76,21 +76,22 @@ const FormFields = [
     },
 
     {
-        name: "role",
+        name: "permission",
         label: null,
         input: {
             type: "radio",
-            name: "role",
+            name: "permission",
             options: [
                 {
-                    id: "user-radio",
-                    label: "User",
-                    value: "user"
-                }, {
-                    id: "admin-radio",
-                    label: "Admin",
-                    value: "admin"
-                }
+                    id: "",
+                    label: "",
+                    value: ""
+                },
+                // {
+                //     id: "admin-radio",
+                //     label: "Admin",
+                //     value: "admin"
+                // }
             ]
         },
     },
@@ -110,6 +111,6 @@ const FormFields = [
 const generateInputFields = (arr: string[]) => {
     return FormFields.filter(input => arr.indexOf(input.name) > -1);
 }
-export const userPermissionForm = generateInputFields(["role"]);
-export const userCreateForm = generateInputFields(["firstName", "lastName", "password", "role", "email", "userName", "isActive"])
+export const userPermissionForm = generateInputFields(["permission"]);
+export const userCreateForm = generateInputFields(["firstName", "lastName", "password", "permission", "email", "userName", "isActive"])
 export const userUpdateForm = generateInputFields(["firstName", "lastName", "email", "userName", "isActive"])

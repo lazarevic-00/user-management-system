@@ -8,6 +8,9 @@ export const UserService = {
     getUser: (id: string) => requests.get(`${USER_URL}/${id}`),
     updateUser: (body: IUser, id: string) => requests.put(`${USER_URL}/${id}`, body),
     createUser: (body: IUser) => requests.post(USER_URL, body),
-    deleteUser: (id: string) => requests.delete(`${USER_URL}/${id}`)
+    deleteUser: (id: string) => requests.delete(`${USER_URL}/${id}`),
+    updatePermission: (permission: string, id: string) => requests.patch(`${USER_URL}/${id}`, {
+        permission: permission
+    })
 }
 

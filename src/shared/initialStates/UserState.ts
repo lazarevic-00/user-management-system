@@ -3,7 +3,7 @@ import {IUser} from "../model/User";
 export const initialUserState: IUser = {
     firstName: "",
     userName: "",
-    permissions: "",
+    permission: "",
     isActive: false,
     id: "",
     lastName: "",
