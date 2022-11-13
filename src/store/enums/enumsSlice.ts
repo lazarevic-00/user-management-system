@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const enumsSlice = createSlice({
     name: 'enums',
-    initialState: {},
+    initialState: [{code: "", description: ""}],
 
     reducers: {
         setEnums: (state, action) => {

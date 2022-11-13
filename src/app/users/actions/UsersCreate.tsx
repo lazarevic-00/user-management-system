@@ -3,19 +3,21 @@ import {useNavigate} from "react-router-dom";
 import {handleBack} from "../../../shared/functions/Functions";
 import {UserAction} from "../components/UserAction";
 import {UserHeader} from "../components/UserHeader";
+import {useState} from "react";
+import {initialUserState} from "../../../shared/initialStates/UserState";
 
 export const UsersCreate = () => {
     const navigate = useNavigate();
-    // const [currentUser, setCurrentUser] = useState(initialUserState);
+    const [currentUser, setCurrentUser] = useState(initialUserState);
     const handleCreateUser = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log('Submitted')
+        console.log('cur', currentUser)
     }
     return (
         <Container className="my-5">
             <UserHeader buttonName="Go back" title="User create" handleClick={() => handleBack(navigate, "/")}/>
             <div className="centered-content">
-                <UserAction handleSubmit={handleCreateUser}/>
+                <UserAction currentUser={currentUser} setCurrentUser={setCurrentUser} handleSubmit={handleCreateUser}/>
             </div>
         </Container>
     )

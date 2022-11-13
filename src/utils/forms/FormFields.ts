@@ -111,5 +111,5 @@ const generateInputFields = (arr: string[]) => {
     return FormFields.filter(input => arr.indexOf(input.name) > -1);
 }
 export const userPermissionForm = generateInputFields(["role"]);
-export const userCreateForm = generateInputFields(["firstName", "lastName", "password", "email", "userName", "isActive"])
+export const userCreateForm = generateInputFields(["firstName", "lastName", "password", "role", "email", "userName", "isActive"])
 export const userUpdateForm = generateInputFields(["firstName", "lastName", "email", "userName", "isActive"])

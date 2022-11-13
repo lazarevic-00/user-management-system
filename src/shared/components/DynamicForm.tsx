@@ -38,9 +38,8 @@ const InputText = ({input, name, onChange, label, description, value}: any) => {
 }
 const InputRadio = ({name, input, onChange}: any) => {
     return input?.options?.map((option: any) => {
-        console.log(option)
         return (
-            <Col md={6} key={option.id}>
+            <Col md={2} key={option.id}>
                 <Form.Check
                     type="radio"
                     onChange={onChange}
