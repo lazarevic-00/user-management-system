@@ -1,5 +1,5 @@
 import {Button, Col, Form, Row} from "react-bootstrap";
-import {IUserActionProps} from "./interfaces/IUserComponents";
+import {IUserActionProps} from "../interfaces/IUserComponents";
 import {UserActionFields} from "./UserActionFields";
 import {UserPermissionFields} from "./UserPermissionFields";
 import {IUser} from "../../../shared/model/User";

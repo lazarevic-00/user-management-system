@@ -1,7 +1,9 @@
 export interface BaseModel<Type> {
     items: Type;
-    meta: {
-        totalItems: number;
-        itemsPerPage: number;
-    }
+    meta: IBaseMeta;
+}
+
+interface IBaseMeta {
+    totalItems: number,
+    itemsPerPage: number
 }

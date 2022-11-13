@@ -12,9 +12,11 @@ interface IUserActionsFieldsProps {
 export const UserActionFields = ({currentUser, isEditForm = false, setCurrentUser}: IUserActionsFieldsProps) => {
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, value} = event.target;
-        setCurrentUser && setCurrentUser(prev => ({...prev, [name]: value}))
+        const {name, value, checked} = event.target;
+        const isCheckbox = name === "isActive";
+        setCurrentUser && setCurrentUser(prev => ({...prev, [name]: isCheckbox ? checked : value}))
     }
+
     return <DynamicForm initialValue={currentUser} changeHandler={changeHandler}
                         inputArrays={isEditForm ? userUpdateForm : userCreateForm}/>
 }

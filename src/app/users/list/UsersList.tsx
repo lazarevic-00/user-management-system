@@ -1,4 +1,4 @@
-import {Container, Spinner} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {UsersListTable} from "../components/UsersListTable";
@@ -10,6 +10,9 @@ import {EmptyState} from "../../../shared/emptyState/EmptyState";
 import {UserService} from "../service";
 import {Pagination} from "../../../shared/components/Pagination";
 import {LoadingSpinner} from "../../../shared/components/LoadingSpinner";
+import {IGetAllUsersProps} from "../interfaces/IUserList";
+import {initialUserState} from "../../../shared/initialStates/UserState";
+
 
 export const UsersList = () => {
     const navigate = useNavigate();
@@ -35,17 +38,33 @@ export const UsersList = () => {
     };
 
     const deleteHandler = (userId: string) => {
-        const filterDeletedUser = userList?.filter(user => user?.id !== userId);
-        SuccessToast(`You have successfully deleted user ${selectedUser?.firstName} ${selectedUser?.lastName}`)
-        setUserList(filterDeletedUser);
+        UserService.deleteUser(userId).then(response => {
+            getAllUsers({
+                setIsLoading: setIsLoading,
+                setState: setUserList,
+                setTotalPages: setTotalPages,
+                pagination: pagination
+            });
+            setSelectedUser(initialUserState);
+            SuccessToast(`You have successfully deleted user ${selectedUser?.firstName} ${selectedUser?.lastName}`)
+        }).catch(error => ErrorToast(error))
     }
 
-    useEffect(() => {
+    const getAllUsers = ({setIsLoading, setState, setTotalPages, pagination}: IGetAllUsersProps) => {
         setIsLoading(true);
         UserService.getAllUsers(pagination).then(response => {
             setTotalPages(Math.ceil(response?.meta.totalItems / response?.meta?.itemsPerPage));
-            setUserList(response.items);
+            setState(response.items);
         }).catch(error => ErrorToast(error)).finally(() => setIsLoading(false));
+    }
+
+    useEffect(() => {
+        getAllUsers({
+            setIsLoading: setIsLoading,
+            setState: setUserList,
+            setTotalPages: setTotalPages,
+            pagination: pagination
+        });
     }, [pagination])
 
     return (

@@ -30,9 +30,12 @@ export const UsersListTable = ({handleShowDeleteModal, userList}: IUsersListProp
             {userList?.map(user => (
                 <tr key={user?.id}>
                     <td>{user?.id}</td>
-                    <td className={`text-${user?.isActive ? "success" : "danger"}`}>
-                        <Check2Circle/>
-                        <span className="ms-1">{user?.isActive ? "Active" : "Inactive"}</span>
+                    <td>
+                        <div
+                            className={`d-flex align-items-center justify-content-center flex-column text-${user?.isActive ? "success" : "danger"}`}>
+                            <Check2Circle/>
+                            <span className="ms-1">{user?.isActive ? "Active" : "Inactive"}</span>
+                        </div>
                     </td>
                     <td>{user?.firstName}</td>
                     <td>{user?.lastName}</td>
@@ -40,13 +43,14 @@ export const UsersListTable = ({handleShowDeleteModal, userList}: IUsersListProp
                     <td>{user?.permissions}</td>
                     <td>{user?.email}</td>
                     <td>
-                        <div className="d-flex align-items-center">
+                        <div className="d-flex align-items-center justify-content-around">
                             <Button variant="primary" size="sm"
                                     onClick={() => navigate(`/user/update/permission/${user?.id}`)}>
                                 <PencilSquare/>
                                 Permission
                             </Button>
-                            <Button variant="warning" size="sm" onClick={() => navigate(`/user/update/${user?.id}`)}>
+                            <Button variant="warning" size="sm" className="mx-1"
+                                    onClick={() => navigate(`/user/update/${user?.id}`)}>
                                 <PersonLinesFill/>
                                 Edit
                             </Button>

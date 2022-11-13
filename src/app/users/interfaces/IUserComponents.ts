@@ -1,4 +1,4 @@
-import {IUser} from "../../../../shared/model/User";
+import {IUser} from "../../../shared/model/User";
 import {SetStateAction} from "react";
 
 export interface IUserActionProps {

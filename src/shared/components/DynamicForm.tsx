@@ -15,9 +15,9 @@ const renderFormTypes = (formInput: any, changeHandler: React.ChangeEvent<HTMLIn
             return <InputText {...formInput} value={initialValue[name] ?? ""}
                               onChange={changeHandler} key={name}/>;
         case "radio":
-            return <InputRadio {...formInput} onChange={changeHandler}/>
+            return <InputRadio {...formInput} onChange={changeHandler} key={name}/>
         case "checkbox":
-            return <InputCheckbox {...formInput} value={initialValue[name] ?? ""} onChange={changeHandler}/>
+            return <InputCheckbox {...formInput} value={initialValue[name] ?? ""} key={name} onChange={changeHandler}/>
         default:
             return null;
     }
@@ -38,6 +38,7 @@ const InputText = ({input, name, onChange, label, description, value}: any) => {
 }
 const InputRadio = ({name, input, onChange}: any) => {
     return input?.options?.map((option: any) => {
+        console.log(option)
         return (
             <Col md={6} key={option.id}>
                 <Form.Check
@@ -52,9 +53,8 @@ const InputRadio = ({name, input, onChange}: any) => {
 }
 
 const InputCheckbox = ({name, input, onChange, label, value}: any) => {
-    console.log(value)
     return (
-        <Col md={6}>
+        <Col md={6} key={label.name}>
             <Form.Check
                 type="radio"
                 label={label.name}
