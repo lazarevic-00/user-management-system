@@ -3,15 +3,16 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {UsersListTable} from "../components/UsersListTable";
 import {UserHeader} from "../components/UserHeader";
-import {ConfirmDelete} from "../../../shared/components/ConfirmDeleteModal";
+import {ConfirmModal} from "../../../shared/components/ConfirmModal";
 import {ErrorToast, SuccessToast} from "../../../shared/toasters/toasters";
 import {IUser} from "../../../shared/model/User";
-import {EmptyState} from "../../../shared/emptyState/EmptyState";
+import {EmptyState} from "../../../shared/components/EmptyState";
 import {UserService} from "../service";
 import {Pagination} from "../../../shared/components/Pagination";
 import {LoadingSpinner} from "../../../shared/components/LoadingSpinner";
 import {IGetAllUsersProps} from "../interfaces/IUserList";
 import {initialUserState} from "../../../shared/initialStates/UserState";
+import {UserFilters} from "../components/UserFilters";
 
 
 export const UsersList = () => {
@@ -73,6 +74,7 @@ export const UsersList = () => {
             <div className="centered-content">
                 <div className="card w-100">
                     <div className="card-body">
+                        <UserFilters/>
                         {!isLoading ? <>
                             {!!userList?.length ?
                                 <UsersListTable userList={userList} handleShowDeleteModal={handleShowDeleteModal}/> :
@@ -88,8 +90,8 @@ export const UsersList = () => {
                     </div>
                 </div>
 
-                <ConfirmDelete show={showDeleteModal} setShow={setShowDeleteModal} selectedItem={selectedUser}
-                               deleteHandler={() => deleteHandler(`${selectedUser?.id}`)}/>
+                <ConfirmModal show={showDeleteModal} setShow={setShowDeleteModal} selectedItem={selectedUser}
+                              deleteHandler={() => deleteHandler(`${selectedUser?.id}`)}/>
             </div>
         </Container>
     )

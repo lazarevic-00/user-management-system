@@ -5,13 +5,17 @@ import {UserAction} from "../components/UserAction";
 import {UserHeader} from "../components/UserHeader";
 import {useState} from "react";
 import {initialUserState} from "../../../shared/initialStates/UserState";
+import {UserService} from "../service";
+import {ErrorToast} from "../../../shared/toasters/toasters";
 
 export const UsersCreate = () => {
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState(initialUserState);
     const handleCreateUser = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log('cur', currentUser)
+        UserService.createUser(currentUser).then(response => {
+            console.log(response)
+        }).catch(error => ErrorToast(error))
     }
     return (
         <Container className="my-5">

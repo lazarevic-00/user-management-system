@@ -87,11 +87,6 @@ const FormFields = [
                     label: "",
                     value: ""
                 },
-                // {
-                //     id: "admin-radio",
-                //     label: "Admin",
-                //     value: "admin"
-                // }
             ]
         },
     },

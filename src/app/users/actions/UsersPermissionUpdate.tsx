@@ -9,7 +9,7 @@ import {initialUserState} from "../../../shared/initialStates/UserState";
 import {UserService} from "../service";
 import {ErrorToast, SuccessToast} from "../../../shared/toasters/toasters";
 
-export const UsersPermission = () => {
+export const UsersPermissionUpdate = () => {
     const {id} = useParams();
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState<IUser>(initialUserState);
@@ -30,7 +30,7 @@ export const UsersPermission = () => {
         }).catch(error => ErrorToast(error))
     }, [id])
 
-
+ 
     return (
         <Container className="my-5">
             <UserHeader buttonName="Go back" title="User update permission"

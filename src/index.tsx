@@ -4,7 +4,6 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'react-bootstrap/dist/react-bootstrap.min';
-import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from 'react-toastify';
 import {Provider} from "react-redux";
 import {store} from "./store/store";

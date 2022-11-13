@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import trashIcon from "../icons/trashIcon.json";
 import React from "react";
 
-export const ConfirmDelete = ({show, setShow, deleteHandler, selectedItem}: any) => {
+export const ConfirmModal = ({show, setShow, deleteHandler, selectedItem}: any) => {
     const handleClose = () => setShow(false);
     return (
         <Modal show={show} onHide={handleClose} size="sm" centered>

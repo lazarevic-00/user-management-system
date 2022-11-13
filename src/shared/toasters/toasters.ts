@@ -1,8 +1,7 @@
 import {toast} from 'react-toastify';
 
-
 export function ErrorToast(e: any) {
-    const errorMessages = e?.response?.data?.message ? e?.response?.data?.message : ["Something went wrong"];
+    const errorMessages = e?.response?.data?.error?.message ? e?.response?.data?.error?.message : ["Something went wrong"];
     const isMessageArray = isErrorArray(errorMessages);
     if (isMessageArray) {
         errorMessages?.forEach((errorMessage: string) => {
