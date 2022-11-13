@@ -31,7 +31,6 @@ export const UsersList = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    console.log(pagination)
     const handlePages = (updatePage: number) => {
         setPagination({...pagination, page: updatePage});
         setPage(updatePage);

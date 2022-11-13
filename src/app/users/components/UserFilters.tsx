@@ -19,7 +19,6 @@ export const UserFilters = ({pagination, setPagination}: IUserFiltersProps) => {
     const {enums} = useSelector((state: IAllStates) => state);
     const handleFiltering = _debounce((event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const {value, name} = event.target;
-        console.log(name, value)
         setPagination((prev) => ({...prev, [name]: value}))
     }, 200);
 
