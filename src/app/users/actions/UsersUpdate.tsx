@@ -3,25 +3,35 @@ import {UserHeader} from "../components/UserHeader";
 import {handleBack} from "../../../shared/functions/Functions";
 import {UserAction} from "../components/UserAction";
 import {useNavigate, useParams} from "react-router-dom";
-import {useEffect} from "react";
+import {SetStateAction, useEffect, useState} from "react";
 import {IUser} from "../../../shared/model/User";
-import {USERS_LIST} from "../../../dummy/dummy";
-import {useDispatch} from "react-redux";
-import userSlice from "../../../store/user/userSlice";
+import {UserService} from "../service";
+import {ErrorToast, SuccessToast} from "../../../shared/toasters/toasters";
+import {LoadingSpinner} from "../../../shared/components/LoadingSpinner";
 
 
 export const UsersUpdate = () => {
     const {id} = useParams();
-    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+    const [currentUser, setCurrentUser] = useState<IUser>();
+
     const handleUpdateUser = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log('Submitted')
+        UserService.updateUser(currentUser as IUser, id as string).then(response => {
+            if (response) {
+                SuccessToast(`You have successfully updated user ID: ${id}`)
+                handleBack(navigate, "/");
+            }
+        }).catch(error => ErrorToast(error))
     }
+
     useEffect(() => {
+        setIsLoading(true)
         if (!!id?.length) {
-            const filteredUser = USERS_LIST.find(user => user.id === id) as IUser;
-            dispatch(userSlice.actions.setUser(filteredUser));
+            UserService.getUser(id).then(response => {
+                setCurrentUser(response)
+            }).catch(error => ErrorToast(error)).finally(() => setIsLoading(false));
         }
     }, [id])
 
@@ -29,7 +39,12 @@ export const UsersUpdate = () => {
         <Container className="my-5">
             <UserHeader buttonName="Go back" title="User update" handleClick={() => handleBack(navigate, "/")}/>
             <div className="centered-content">
-                <UserAction handleSubmit={handleUpdateUser}/>
+                {!isLoading ?
+                    <UserAction currentUser={currentUser}
+                                setCurrentUser={setCurrentUser as React.Dispatch<SetStateAction<IUser>>}
+                                isEditForm={true}
+                                handleSubmit={handleUpdateUser}/> :
+                    <LoadingSpinner/>}
             </div>
         </Container>
     )

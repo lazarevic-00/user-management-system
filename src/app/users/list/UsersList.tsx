@@ -9,6 +9,7 @@ import {IUser} from "../../../shared/model/User";
 import {EmptyState} from "../../../shared/emptyState/EmptyState";
 import {UserService} from "../service";
 import {Pagination} from "../../../shared/components/Pagination";
+import {LoadingSpinner} from "../../../shared/components/LoadingSpinner";
 
 export const UsersList = () => {
     const navigate = useNavigate();
@@ -57,12 +58,7 @@ export const UsersList = () => {
                             {!!userList?.length ?
                                 <UsersListTable userList={userList} handleShowDeleteModal={handleShowDeleteModal}/> :
                                 <EmptyState/>}
-                        </> : <div>
-                            <div className="w-100 text-center">
-                                <Spinner animation="border" role="status"/>
-                            </div>
-                            <p className="text-center">Loading....</p>
-                        </div>}
+                        </> : <LoadingSpinner/>}
 
                         {totalPages <= 1 ? '' :
                             <div className="d-flex justify-content-end">

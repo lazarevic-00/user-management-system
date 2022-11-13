@@ -94,10 +94,22 @@ const FormFields = [
             ]
         },
     },
+    {
+        name: "isActive",
+        label: {
+            name: "Is user active",
+            className: "required-input"
+        },
+        input: {
+            type: "checkbox",
+            name: "isActive",
+        },
+    },
 ]
 
 const generateInputFields = (arr: string[]) => {
     return FormFields.filter(input => arr.indexOf(input.name) > -1);
 }
 export const userPermissionForm = generateInputFields(["role"]);
-export const userActionForm = generateInputFields(["firstName", "lastName", "password", "email", "username"])
+export const userCreateForm = generateInputFields(["firstName", "lastName", "password", "email", "userName", "isActive"])
+export const userUpdateForm = generateInputFields(["firstName", "lastName", "email", "userName", "isActive"])

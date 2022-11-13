@@ -1,16 +1,20 @@
-import {useSelector} from "react-redux";
-import {IAllStates} from "../../../store/rootReducer";
 import {DynamicForm} from "../../../shared/components/DynamicForm";
-import {userActionForm} from "../../../utils/forms/FormFields";
+import {userCreateForm, userUpdateForm} from "../../../utils/forms/FormFields";
+import {IUser} from "../../../shared/model/User";
+import {SetStateAction} from "react";
 
-export const UserActionFields = () => {
-    const currentUser = useSelector(
-        (state: IAllStates) => state.user
-    );
+interface IUserActionsFieldsProps {
+    currentUser: IUser;
+    setCurrentUser?: React.Dispatch<SetStateAction<IUser>>;
+    isEditForm?: boolean;
+}
+
+export const UserActionFields = ({currentUser, isEditForm = false, setCurrentUser}: IUserActionsFieldsProps) => {
+
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target;
-        console.log(name, value)
+        setCurrentUser && setCurrentUser(prev => ({...prev, [name]: value}))
     }
-    console.log(currentUser)
-    return <DynamicForm initialValue={currentUser} changeHandler={changeHandler} inputArrays={userActionForm}/>
+    return <DynamicForm initialValue={currentUser} changeHandler={changeHandler}
+                        inputArrays={isEditForm ? userUpdateForm : userCreateForm}/>
 }
